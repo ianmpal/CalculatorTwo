@@ -100,8 +100,36 @@ func subPoints(point1: (Int, Int), point2: (Int, Int)) -> (newX: Int, newY: Int)
     return newPoint
 }
 
-print(addPoints(point1, point2: point2))
-print(subPoints(point1, point2: point2))
+//print(addPoints(point1, point2: point2))
+//print(subPoints(point1, point2: point2))
+
+func addPoints(dictionary1: [String: Int], dictionary2: [String: Int]) -> (newX: Int, newY: Int) {
+    var newPoint = (newX: 0, newY: 0)
+    
+    newPoint.0 = dictionary1["x"]! + dictionary2["x"]!
+    newPoint.1 = dictionary1["y"]! + dictionary2["y"]!
+   
+    
+    return newPoint
+}
+
+func subPoints(dictionary1: [String: Int], dictionary2: [String: Int]) -> (newX: Int, newY: Int) {
+    var newPoint = (newX: 0, newY: 0)
+    
+    newPoint.0 = dictionary1["x"]! - dictionary2["x"]!
+    newPoint.1 = dictionary1["y"]! - dictionary2["y"]!
+    return newPoint
+}
+
+
+
+
+var pointsDict1: [String: Int]?   = ["x": 1, "y": 2]
+var pointsDict2: [String: Int]?  = ["x": 3, "y": 4]
+
+
+print(addPoints(pointsDict1!, dictionary2: pointsDict2!))
+print(subPoints(pointsDict1!, dictionary2: pointsDict2!))
 
 
 
