@@ -124,12 +124,12 @@ func subPoints(dictionary1: [String: Int], dictionary2: [String: Int]) -> (newX:
 
 
 
-var pointsDict1: [String: Int]?   = ["x": 1, "y": 2]
-var pointsDict2: [String: Int]?  = ["x": 3, "y": 4]
+var pointsDict1: [String: Int]   = ["x": 1, "y": 2]
+var pointsDict2: [String: Int]  = ["x": 3, "y": 4]
 
 
-print(addPoints(pointsDict1!, dictionary2: pointsDict2!))
-print(subPoints(pointsDict1!, dictionary2: pointsDict2!))
+print(addPoints(pointsDict1, dictionary2: pointsDict2))
+print(subPoints(pointsDict1, dictionary2: pointsDict2))
 
 
 
