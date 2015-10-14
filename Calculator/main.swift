@@ -28,10 +28,10 @@ func div(num1: Double, num2: Double) -> Double {
 }
 
 
-//print(add(2, num2: 3))
-//print(sub(5, num2: 3))
-//print(mult(4, num2: 8))
-//print(div(32,num2: 8))
+//print(add(2, num2: 3))  // 5
+//print(sub(5, num2: 3))  // 2
+//print(mult(4, num2: 8)) // 32
+//print(div(32,num2: 8))  // 4.0
 
 func performOp(num1: Double, num2: Double, op: (Double, Double) -> Double) -> Double {
     return op(num1, num2)
@@ -39,7 +39,12 @@ func performOp(num1: Double, num2: Double, op: (Double, Double) -> Double) -> Do
 
 
 
-//print(performOp(10, num2: 5, op: mult))
+//print(performOp(10, num2: 5, op: add))  // 15
+//print(performOp(10, num2: 5, op: sub))  // 5
+//print(performOp(10, num2: 5, op: mult)) // 50
+//print(performOp(10, num2: 5, op: div))  // 2
+
+
 
 // Homework: Array Fun
 
@@ -74,14 +79,24 @@ func avgArray(numbers: [Int]) -> Double {
 
 var numbers: [Int] = [2, 3 , 4, 5]
 
-//print(avgArray(numbers))
+//print(addArray(numbers))   // 14
+//print(multArray(numbers))  // 120
+//print(countArray(numbers)) // 4
+//print(avgArray(numbers))   // 3.5
+
 
 
 func performOp(arr1: [Int], op: ([Int]) -> Int) -> Int {
     return op(arr1)
 }
 
+
+
+//print(performOp(numbers, op: addArray))
+//print(performOp(numbers, op: multArray))
 //print(performOp(numbers, op: countArray))
+//print(performOp(numbers, op: avgArray))  //averages require doubles
+
 
 
 // Homework: Points
@@ -90,18 +105,18 @@ let point1 = (1,2)
 let point2 = (3,4)
 
 
-func addPoints(point1: (Int, Int), point2: (Int, Int)) -> (newX: Int, newY: Int) {
-    let newPoint = (point1.0 + point2.0, point1.1 + point2.1)
+func addPoints(p1: (Int, Int), p2: (Int, Int)) -> (newX: Int, newY: Int) {
+    let newPoint = (p1.0 + p2.0, p1.1 + p2.1)
     return newPoint
 }
 
-func subPoints(point1: (Int, Int), point2: (Int, Int)) -> (newX: Int, newY: Int) {
-    let newPoint = (point1.0 - point2.0, point1.1 - point2.1)
+func subPoints(p1: (Int, Int), p2: (Int, Int)) -> (newX: Int, newY: Int) {
+    let newPoint = (p1.0 - p2.0, p1.1 - p2.1)
     return newPoint
 }
 
-//print(addPoints(point1, point2: point2))
-//print(subPoints(point1, point2: point2))
+//print(addPoints(point1, p2: point2)) // (4, 6)
+//print(subPoints(point1, p2: point2)) // (-2, -2)
 
 func addPoints(dictionary1: [String: Int], dictionary2: [String: Int]) -> (newX: Int, newY: Int) {
     var newPoint = (newX: 0, newY: 0)
@@ -113,23 +128,37 @@ func addPoints(dictionary1: [String: Int], dictionary2: [String: Int]) -> (newX:
     return newPoint
 }
 
-func subPoints(dictionary1: [String: Int], dictionary2: [String: Int]) -> (newX: Int, newY: Int) {
+func subPoints(var d1: [String: Int], var d2: [String: Int]) -> (newX: Int, newY: Int) {
     var newPoint = (newX: 0, newY: 0)
     
-    newPoint.0 = dictionary1["x"]! - dictionary2["x"]!
-    newPoint.1 = dictionary1["y"]! - dictionary2["y"]!
+    if d1["x"] == nil {
+        d1["x"] = 0
+    } else if d2["x"] == nil {
+        d2["x"] = 0
+    } else if d1["y"] == nil {
+        d1["y"] = 0
+    } else if d2["y"] == nil {
+        d2["y"] = 0
+    }
+    
+    
+    newPoint.0 = d1["x"]! - d2["x"]!
+    newPoint.1 = d1["y"]! - d2["y"]!
+   
+//    if d1 != nil && d2 != nil
+//        newPoint.0 = d1!["x"] - d2!["x"]
+//        newPoint.1 = d1["y"]! - d2["y"]!
+//    }
+    
     return newPoint
 }
 
 
+var dict1 = ["x": 1, "y": 2]
+var dict2 = ["x": 3, "y": 4]
 
 
-var pointsDict1: [String: Int]   = ["x": 1, "y": 2]
-var pointsDict2: [String: Int]  = ["x": 3, "y": 4]
-
-
-print(addPoints(pointsDict1, dictionary2: pointsDict2))
-print(subPoints(pointsDict1, dictionary2: pointsDict2))
+//print(subPoints(dict1, d2: dict2))
 
 
 
