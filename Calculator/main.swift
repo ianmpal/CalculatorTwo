@@ -118,47 +118,48 @@ func subPoints(p1: (Int, Int), p2: (Int, Int)) -> (newX: Int, newY: Int) {
 //print(addPoints(point1, p2: point2)) // (4, 6)
 //print(subPoints(point1, p2: point2)) // (-2, -2)
 
-func addPoints(dictionary1: [String: Int], dictionary2: [String: Int]) -> (newX: Int, newY: Int) {
-    var newPoint = (newX: 0, newY: 0)
-    
-    newPoint.0 = dictionary1["x"]! + dictionary2["x"]!
-    newPoint.1 = dictionary1["y"]! + dictionary2["y"]!
-   
-    
-    return newPoint
-}
 
-func subPoints(var d1: [String: Int], var d2: [String: Int]) -> (newX: Int, newY: Int) {
-    var newPoint = (newX: 0, newY: 0)
+func addPoints(d1: [String: Int]?, d2: [String: Int]?) -> (newX: Int, newY: Int)? {
+    var newPoint = (newX: 0, newY: 0) // Defaults to 0 if one of the X or Y values is nil
     
-    if d1["x"] == nil {
-        d1["x"] = 0
-    } else if d2["x"] == nil {
-        d2["x"] = 0
-    } else if d1["y"] == nil {
-        d1["y"] = 0
-    } else if d2["y"] == nil {
-        d2["y"] = 0
+    if d1 != nil && d2 != nil {
+    
+        if d1!.keys.contains("x") && d2!.keys.contains("x") {
+            newPoint.0 = d1!["x"]! + d2!["x"]!
+        }
+        
+        if d1!.keys.contains("y") && d2!.keys.contains("y") {
+            newPoint.1 = d1!["y"]! + d2!["y"]!
+        }
     }
     
+    return newPoint
+}
+
+func subPoints(d1: [String: Int]?, d2: [String: Int]?) -> (newX: Int, newY: Int)? {
+    var newPoint = (newX: 0, newY: 0) // Defaults to 0 if one of the X or Y values is nil
     
-    newPoint.0 = d1["x"]! - d2["x"]!
-    newPoint.1 = d1["y"]! - d2["y"]!
-   
-//    if d1 != nil && d2 != nil
-//        newPoint.0 = d1!["x"] - d2!["x"]
-//        newPoint.1 = d1["y"]! - d2["y"]!
-//    }
+    if d1 != nil && d2 != nil {
+        
+        if d1!.keys.contains("x") && d2!.keys.contains("x") {
+            newPoint.0 = d1!["x"]! - d2!["x"]!
+        }
+        
+        if d1!.keys.contains("y") && d2!.keys.contains("y") {
+            newPoint.1 = d1!["y"]! - d2!["y"]!
+        }
+    }
     
     return newPoint
 }
 
 
-var dict1 = ["x": 1, "y": 2]
-var dict2 = ["x": 3, "y": 4]
 
+var dict1 = ["x": 5, "y": 2]
+var dict2 = ["x": 9, "y": 4]
 
-//print(subPoints(dict1, d2: dict2))
+//print(addPoints(dict1, d2: dict2)!) // (14, 6)
+//print(subPoints(dict1, d2: dict2)!) // (-4, -2)
 
 
 
